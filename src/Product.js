@@ -1,10 +1,20 @@
 import React from "react";
 import ProductItem from "./components/ProductItem/index";
+import './product.scss';
 
-function Product() {
+function Product({ products }) {
   return (
-    <div className="product-wrap">
-      <ProductItem />
+    <div className="weekly">
+      {products.map(product => (
+        <div className="weekly-block" key={product.id}>
+          <strong>{product.name}</strong>
+          <div className="product-wrap">
+            {product.products.map(item =>
+              <ProductItem product={item} key={item.id} />
+            )}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

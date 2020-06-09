@@ -1,22 +1,23 @@
 import React from "react";
 import './style.scss';
 
-function ProductItem() {
+function ProductItem({ product }) {
   return (
     <div className="product-item">
       <div className="product__photo">
-        <img src="" alt="" />
+        <img src={product.thumbnail.small} alt="" />
       </div>
       <div className="product__contents">
-        <span className="product__city">서울</span>
-        <strong className="product__name">[서울] 창경궁 야간 프라이빗 투어 + 스냅 사진</strong>
+        <span className="product__city">{product.cities[0].name}</span>
+        <strong className="product__name">{product.title}</strong>
         <div className="product__price">
-          <strong className="product__price--sale">21,900원</strong>
-          <del className="product__price--normal">43,000원</del>
+          <strong className="product__price--sale">{product.price.sale}원</strong>
+          <del className="product__price--normal">{product.price.normal}원</del>
         </div>
         <div className="product__information">
-          <span className="">2020년 5월 29일부터 사용가능</span>
-          <span className="">별점: 4점</span>
+          <span className="">별점: {product.review.score}점</span>
+          <span className="">조회: {product.viewCount}</span>
+          <span className="">리뷰: {product.review.count}</span>
         </div>
       </div>
     </div>
